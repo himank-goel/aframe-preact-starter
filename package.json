@@ -12,13 +12,15 @@
     "deploy": "ghpages -d public"
   },
   "dependencies": {
-    "aframe": "^0.6.0",
+    "aframe": "^0.6.1",
     "aframe-animation-component": "^3.2.5",
     "aframe-bmfont-text-component": "^0.1.4",
     "aframe-event-set-component": "^3.0.3",
     "aframe-particle-system-component": "^1.0.10",
-    "aframe-react": "^4.3.0",
-    "preact": "^8.1.0"
+    "aframe-react": "^4.4.0",
+    "preact": "^8.1.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "devDependencies": {
     "auto-reload-brunch": "^2",
