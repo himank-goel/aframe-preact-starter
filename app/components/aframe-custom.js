@@ -75,5 +75,8 @@ AFRAME.registerComponent("lowpoly", {
   update: function() {
     // Get the ref of the object to which the component is attached
     const obj = this.el.getObject3D("mesh");
+
+    // Modify the color of the material during runtime
+    obj.material.color = new THREE.Color(this.data.color);
   }
 });
