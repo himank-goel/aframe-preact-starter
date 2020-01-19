@@ -27,6 +27,10 @@ class Main extends Component {
   render() {
     return (
       <Scene
+        effects="bloom, film, fxaa"
+        bloom="radius: 0.99"
+        film="sIntensity: 0.15; nIntensity: 0.15"
+        fxaa
         environment={{
           preset: "starry",
           seed: 2,
@@ -46,6 +50,26 @@ class Main extends Component {
             nodes: true,
             opacity: 0.15,
             wireframe: true
+          }}
+          animation__rotate={{
+            property: "rotation",
+            dur: 200000,
+            easing: "linear",
+            loop: true,
+            to: { x: 0, y: 360, z: 0 }
+          }}
+          animation__oscillate={{
+            property: "position",
+            dur: 2000,
+            dir: "alternate",
+            easing: "linear",
+            loop: true,
+            from: this.state.spherePosition,
+            to: {
+              x: this.state.spherePosition.x,
+              y: this.state.spherePosition.y + 0.25,
+              z: this.state.spherePosition.z
+            }
           }}
           primitive="a-octahedron"
           detail={2}
@@ -71,7 +95,7 @@ class Main extends Component {
             geometry={{ radiusInner: 0.005, radiusOuter: 0.007 }}
             event-set__1={{
               _event: "mouseenter",
-              scale: { x: 1.4, y: 1.4, z: 1.4 }
+              scale: { x: 2, y: 2, z: 2 }
             }}
             event-set__2={{
               _event: "mouseleave",
