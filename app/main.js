@@ -32,15 +32,20 @@ class Main extends Component {
         film="sIntensity: 0.15; nIntensity: 0.15"
         fxaa
         environment={{
-          preset: "starry",
+          preset: "egypt",
           seed: 2,
-          lightPosition: { x: 10.0, y: 0.03, z: -0.5 },
+          // lightPosition: { x: 0.0, y: 10.03, z: -0.5 },
           fog: 0.8,
-          ground: "canyon",
+          ground: "hills",
           groundYScale: 6.31,
           groundTexture: "walkernoise",
           groundColor: "#8a7f8a",
           grid: "none"
+        }}
+        sunrise={{
+          from: { x: -1, y: 0, z: 0 },
+          to: { x: 0, y: 1, z: 0 },
+          duration: 10000
         }}
       >
         <Entity
@@ -80,13 +85,13 @@ class Main extends Component {
             click: this._handleClick.bind(this)
           }}
         />
-        <Entity
+        {/* <Entity
           primitive="a-light"
           type="directional"
           color="#FFF"
           intensity={1}
           position={{ x: 2.5, y: 0.0, z: 0.0 }}
-        />
+        /> */}
         <Entity primitive="a-camera" look-controls>
           <Entity
             primitive="a-cursor"

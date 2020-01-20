@@ -80,3 +80,53 @@ AFRAME.registerComponent("lowpoly", {
     obj.material.color = new THREE.Color(this.data.color);
   }
 });
+
+AFRAME.registerComponent("sunrise", {
+  schema: {
+    from: {
+      type: "vec3",
+      default: { x: 0, y: 1, z: -0.2 }
+    },
+    to: {
+      type: "vec3",
+      default: { x: 0, y: 1, z: 0.2 }
+    },
+    duration: {
+      type: "int",
+      default: 5000
+    }
+  },
+
+  init() {
+    this.sunPos = {
+      x: this.data.from.x,
+      y: this.data.from.y,
+      z: this.data.from.z
+    };
+
+    this.moveSun();
+  },
+
+  update(oldData) {
+    this.sunPos = {
+      x: this.data.from.x,
+      y: this.data.from.y,
+      z: this.data.from.z
+    };
+
+    this.moveSun();
+
+    this.tween = new AFRAME.TWEEN.Tween(this.sunPos)
+      .to(this.data.to, this.data.duration)
+      .easing(TWEEN.Easing.Quadratic.InOut)
+      .onUpdate(this.moveSun.bind(this))
+      .start();
+  },
+
+  moveSun: function() {
+    const p = this.sunPos;
+    this.el.setAttribute("environment", {
+      lightPosition: { x: p.x, y: p.y, z: p.z }
+    });
+  }
+});
